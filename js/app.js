@@ -5,7 +5,6 @@ import {
   deleteContact,
 } from "./database.js";
 
-
 document.addEventListener("DOMContentLoaded", () => {
   const addBtn = document.getElementById("add_contact_btn");
   const sheet = document.getElementById("bottomSheet");
@@ -17,7 +16,14 @@ document.addEventListener("DOMContentLoaded", () => {
   if (addBtn) {
     sheetHeading.textContent = "Add Contact";
     saveBtn.textContent = "Save";
-    addBtn.addEventListener("click", () => sheet.classList.add("show"));
+    addBtn.addEventListener("click", () => {
+      sheet.classList.add("show");
+    });
+
+    saveBtn.addEventListener("click", () => {
+
+      addContactBtn();
+    });
   }
 
   if (editBtn) {
@@ -104,10 +110,8 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       detail.addEventListener("click", async () => {
-        await deleteContact(c.id);
-        await loadAndRender();
 
-        // window.location.href = `./pages/contact.html?id=${c.id}`;
+        window.location.href = `./pages/contact.html?id=${c.id}`;
       });
     });
   }
@@ -123,15 +127,43 @@ document.addEventListener("DOMContentLoaded", () => {
       contactList.innerHTML = "<p>Error loading contacts.</p>";
     }
   }
+  
+
+  async function addContactBtn() {
+  // input elements
+  const firstNameInput = document.getElementById("firstNameInput");
+  const lastNameInput = document.getElementById("lastNameInput");
+  const numberInput = document.getElementById("phoneInput");
+  const emailInput = document.getElementById("emailInput");
+
+  // values
+  const firstName = firstNameInput.value.trim();
+  const lastName = lastNameInput.value.trim();
+  const number = numberInput.value.trim();
+  const email = emailInput.value.trim();
+
+  // validation check
+  if (!firstName || !lastName || !number || !email) {
+    alert("Please fill all fields before saving.");
+    return;
+  }
+
+  // save contact
+  await addContact(firstName, lastName, number, email);
+  loadAndRender();
+
+  // close sheet
+  sheet.classList.remove("show");
+
+  // clear inputs
+  firstNameInput.value = "";
+  lastNameInput.value = "";
+  numberInput.value = "";
+  emailInput.value = "";
+}
+
 
 
 
   loadAndRender();
 });
-
-// (async () => {
-
-// //   const contacts = await fetchContacts();
-//   console.log(contacts);
-
-// })();
