@@ -1,0 +1,214 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif; /* imported font */
+}
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f0f0f0;
+}
+
+/* Bottom Sheet hidden by default */
+.bottom-sheet {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -100%; /* hide below screen */
+  background: #222;
+  border-radius: 12px 12px 0 0;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+  transition: bottom 0.3s ease;
+  padding: 20px;
+  height: 80%;
+}
+
+.bottom-sheet.show {
+  bottom: 0; /* slide up */
+}
+
+.sheet-content input {
+  display: block;
+  margin: 10px 0;
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  background-color: #444;
+  border: none;
+  color: #fff;
+}
+
+
+
+
+.main_container {
+  position: relative;
+  padding: 0 15px;
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+  width: 300px;
+  max-width: 300px;
+  background-color: #000;
+  color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.main_heading {
+  display: flex;
+  height: 80px;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+}
+.add_contact {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background-color: #333;
+  color: white;
+  font-size: 28px; /* size of + */
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* optional shadow */
+  transition: 0.2s;
+}
+
+.add_contact:hover {
+  background-color: #666; /* hover effect */
+  transform: scale(1.05);
+}
+
+.contact_card {
+  color: white;
+}
+.contact_list {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 5px;
+  margin-right: -10px;
+}
+
+.contact_list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.contact_list::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 10px;
+}
+
+.contact_info_main {
+  display: flex;
+  flex-direction: column;
+  background-color: #333;
+  border-radius: 5px;
+}
+.contact_detailes {
+  padding: 8px;
+  align-items: center;
+  display: flex;
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #666;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  font-size: 18px;
+  margin-right: 12px;
+}
+
+.details h3 {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.details_divider {
+  border-bottom: 1px solid #727272;
+}
+
+.back_btn {
+  background: none;
+  color: #fff;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  margin: 20px 0;
+}
+
+.avatar_big {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #666;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0 auto 15px auto;
+}
+.single_contact_details {
+  border-radius: 5px;
+  background-color: #333;
+  padding: 20px 0 15px 0;
+}
+.contact_info {
+  padding: 0 20px;
+  /* text-align: center; */
+}
+.contact_info p {
+  font-size: 14px;
+}
+
+.contact_info h2 {
+  font-size: 20px;
+}
+.actions ,
+.buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.actions button,
+.buttons button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+
+.save_btn,
+.cancel_btn,
+.delete_btn,
+.edit_btn {
+  background: #333;
+  color: white;
+  transition: 0.2s;
+}
+
+.save_btn:hover,
+.cancel_btn:hover,
+.delete_btn:hover, 
+.edit_btn:hover {
+  background: #666;
+  transform: scale(1.05);
+}

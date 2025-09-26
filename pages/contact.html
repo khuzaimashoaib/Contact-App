@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact</title>
+    <link rel="stylesheet" href="../style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    
+  </head>
+  <body>
+    <div class="main_container">
+      <div class="bottom-sheet" id="bottomSheet">
+        <div class="sheet-content">
+          <h3>Add Contact</h3>
+          <input type="text" placeholder="First Name" />
+          <input type="text" placeholder="Last Name" />
+          <input type="text" placeholder="Phone" />
+          <input type="email" placeholder="Email" />
+
+          <div class="actions">
+            <button class="cancel_btn" id="closeSheet">Cancel</button>
+            <button class="save_btn">Save</button>
+          </div>
+        </div>
+      </div>
+      <div>
+        <button class="back_btn" onclick="window.history.back()">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+      </div>
+
+      <!-- Avatar -->
+      <div class="single_contact_details">
+        <div class="avatar_big" id="avatarBig">A</div>
+
+        <!-- Contact Info -->
+        <div class="contact_info">
+          <h2 id="fullName">Ali Khan</h2>
+          <p id="phone">+92 300-1234567</p>
+          <p id="email">khuzaima.shoaib@gmail.com</p>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="buttons">
+        <button class="edit_btn" id="editBtn">Edit</button>
+        <button class="delete_btn">Delete</button>
+      </div>
+    </div>
+    <script type="module" src="../js/app.js"></script>
+  </body>
+</html>
