@@ -43,3 +43,5 @@ export async function deleteContact(id) {
 
   if (error) console.error("Delete error:", error);
 }
+
+

@@ -42,9 +42,6 @@ body {
   color: #fff;
 }
 
-
-
-
 .main_container {
   position: relative;
   padding: 0 15px;
@@ -116,9 +113,12 @@ body {
   padding: 8px;
   align-items: center;
   display: flex;
+  gap: 10px;
+  min-width: 0;
 }
 
 .avatar {
+  flex: 0 0 30px;
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -128,12 +128,21 @@ body {
   align-items: center;
   font-weight: 600;
   font-size: 18px;
-  margin-right: 12px;
+}
+.details {
+  flex: 1;
+  min-width: 0;
 }
 
 .details h3 {
   font-size: 16px;
   font-weight: 500;
+}
+
+.details .name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .details_divider {
@@ -178,7 +187,7 @@ body {
 .contact_info h2 {
   font-size: 20px;
 }
-.actions ,
+.actions,
 .buttons {
   display: flex;
   gap: 10px;
@@ -195,7 +204,6 @@ body {
   font-weight: 500;
 }
 
-
 .save_btn,
 .cancel_btn,
 .delete_btn,
@@ -207,7 +215,7 @@ body {
 
 .save_btn:hover,
 .cancel_btn:hover,
-.delete_btn:hover, 
+.delete_btn:hover,
 .edit_btn:hover {
   background: #666;
   transform: scale(1.05);
