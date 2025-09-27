@@ -29,9 +29,16 @@ export async function addContact(first_name, last_name, number, email) {
 }
 
 export async function updateContact(id, first_name, last_name, number, email) {
+  const updateData = {};
+
+  if (first_name) updateData.first_name = first_name;
+  if (last_name) updateData.last_name = last_name;
+  if (number) updateData.number = number;
+  if (email) updateData.email = email;
+
   let { data, error } = await supabase
     .from("contacts")
-    .update({ first_name, last_name, number, email })
+    .update(updateData)
     .eq("id", id);
 
   if (error) console.error("Update error:", error);
@@ -43,4 +50,3 @@ export async function deleteContact(id) {
 
   if (error) console.error("Delete error:", error);
 }
-
