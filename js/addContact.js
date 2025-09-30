@@ -1,5 +1,6 @@
 import { addContact } from "./database.js";
 import { loadAndRender } from "./fetchingData.js";
+import { withSpinner, showToast } from "./utils.js";
 
 export async function addContactBtn(sheet) {
   // input elements
@@ -7,6 +8,7 @@ export async function addContactBtn(sheet) {
   const lastNameInput = document.getElementById("lastNameInput");
   const numberInput = document.getElementById("phoneInput");
   const emailInput = document.getElementById("emailInput");
+  const saveBtn = document.getElementById("saveBtn");
 
   // values
   const firstName = firstNameInput.value.trim();
@@ -15,23 +17,25 @@ export async function addContactBtn(sheet) {
   const email = emailInput.value.trim();
 
   // validation check
-  if (!firstName || !number) {
-    alert("Please fill all fields before saving.");
+  if (!firstName) {
+    showToast("First name is required!", 2000);
     return;
   }
 
-  // save contact
-  await addContact(firstName, lastName, number, email);
+  if (!number) {
+    showToast("Phone number is required!", 2000);
+    return;
+  }
 
-  // reload contacts
-  loadAndRender();
+  withSpinner(saveBtn, "Saving...", async () => {
+    await addContact(firstName, lastName, number, email);
+    await loadAndRender();
+    sheet.classList.remove("show");
 
-  // close sheet
-  sheet.classList.remove("show");
-
-  // clear inputs
-  firstNameInput.value = "";
-  lastNameInput.value = "";
-  numberInput.value = "";
-  emailInput.value = "";
+    firstNameInput.value = "";
+    lastNameInput.value = "";
+    numberInput.value = "";
+    emailInput.value = "";
+    showToast("Contact added successfully!");
+  });
 }

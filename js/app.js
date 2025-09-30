@@ -1,7 +1,5 @@
-
 import { loadAndRender } from "./fetchingData.js";
 import { addContactBtn } from "./addContact.js";
-
 
 document.addEventListener("DOMContentLoaded", () => {
   const addBtn = document.getElementById("add_contact_btn");
@@ -20,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
       addContactBtn(sheet);
     });
   }
-   
+
   closeBtn.addEventListener("click", () => {
     sheet.classList.remove("show");
   });

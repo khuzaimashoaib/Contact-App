@@ -1,5 +1,6 @@
 import { fetchContacts, deleteContact } from "./database.js";
 import { updateContactBtn } from "./updateContact.js";
+import { withSpinner, showToast } from "./utils.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   const sheet = document.getElementById("bottomSheet");
@@ -30,7 +31,21 @@ document.addEventListener("DOMContentLoaded", async () => {
   document.getElementById("email").textContent = contact.email || "(No email)";
 
   document.getElementById("deleteBtn").addEventListener("click", async () => {
-    await deleteContact(contact.id);
+    const deleteBtn = document.getElementById("deleteBtn");
+    await withSpinner(
+      deleteBtn,
+      "Deleting...",
+      async () => {
+        await deleteContact(contact.id);
+      },
+      1500
+    );
+    await new Promise((resolve) => {
+      showToast("Contact deleted successfully!", 2000);
+
+      setTimeout(resolve, 1000);
+    }); // toast duration
+
     window.location.href = "../index.html";
   });
 
@@ -43,7 +58,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     saveBtn.addEventListener("click", async () => {
       await updateContactBtn(contactId, sheet);
-      window.location.href = "../index.html";
+      showToast("Contact updated successfully!", 2000);
     });
   }
 });

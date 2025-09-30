@@ -93,7 +93,6 @@ export  async function loadAndRender() {
   try {
     const contacts = await fetchContacts(); // from database.js
     renderContacts(contacts);
-    console.log(contacts);
   } catch (err) {
     console.error(err);
     contactList.innerHTML = "<p>Error loading contacts.</p>";

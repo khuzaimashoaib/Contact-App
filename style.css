@@ -222,3 +222,48 @@ body {
   background: #666;
   transform: scale(1.05);
 }
+
+.spinner {
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #3498db;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+  animation: spin 1s linear infinite;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Toast container */
+#toast-container {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+}
+
+/* Toast message */
+.toast {
+  background-color: #333;
+  color: #fff;
+  padding: 12px 20px;
+  margin-top: 10px;
+  border-radius: 8px;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  font-family: sans-serif;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
